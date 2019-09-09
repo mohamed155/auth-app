@@ -1,16 +1,25 @@
-<!-- <ion-menu [content]="content">
+<ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item>
+      <button ion-item *ngIf="!isAuth" (click)="onGoToSignIn()">
+        Login
+      </button>
+      <button ion-item *ngIf="!isAuth" (click)="onGoToSignUp()">
+        Sign up
+      </button>
+      <button ion-item *ngIf="isAuth" (click)="onLogout()">
         Logout
       </button>
     </ion-list>
   </ion-content>
-</ion-menu> -->
+</ion-menu>
 
 <ion-nav [root]="rootPage" #content></ion-nav>

@@ -1,26 +1,16 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
-      Login
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form autocomplete="off">
-      <input autocomplete="false" name="hidden" type="text" style="display:none;">
-    <ion-list>
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" value=""></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" value=""></ion-input>
-      </ion-item>
-      <ion-item>
-        <button ion-button block round padding>Login</button>
-      </ion-item>
-    </ion-list>
-  </form>
+  Home Screen
+  <br>
+  <button ion-button (click)="onLogout()">Logout</button>
 </ion-content>

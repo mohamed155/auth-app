@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
+    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input name="email" type="email" value="" ngModel required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input name="password" type="password" value="" ngModel required></ion-input>
+      </ion-item>
+      <ion-item>
+        <button type="submit" ion-button block round padding [disabled]="!f.valid">Login</button>
+      </ion-item>
+    </ion-list>
+  </form>
+  <ion-item no-lines>
+    <button padding ion-button clear block (click)="onGoToSignUp()">Have no account ? sign up now</button>
+  </ion-item>
+</ion-content>
