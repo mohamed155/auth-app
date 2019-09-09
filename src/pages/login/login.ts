@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, LoadingController, NavController} from 'ionic-angular';
+import {AlertController, LoadingController, NavController, ToastController} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth";
 import {SignupPage} from "../signup/signup";
@@ -14,7 +14,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public authService: AuthService,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController
   ) {
 
   }
@@ -27,7 +28,12 @@ export class LoginPage {
     const loader = this.loadingCtrl.create();
     loader.present();
     this.authService.signin(form.value.email, form.value.password)
-      .then(data => loader.dismiss())
+      .then(data => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: 'Login Successful'
+        }).present();
+      })
       .catch(error => {
         loader.dismiss();
         this.alertCtrl.create({

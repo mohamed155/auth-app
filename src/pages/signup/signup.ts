@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth";
 
@@ -12,14 +12,21 @@ export class SignupPage {
   constructor(
     public loadingCtrl: LoadingController,
     public authService: AuthService,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController
+    ) {
   }
 
   onSubmit(form: NgForm) {
     const loader = this.loadingCtrl.create();
     loader.present();
     this.authService.signup(form.value.email, form.value.password)
-      .then(data => loader.dismiss())
+      .then(data => {
+        loader.dismiss();
+        this.toastCtrl.create({
+          message: 'Sign up Successful'
+        }).present();
+      })
       .catch(error => {
         loader.dismiss();
         this.alertCtrl.create({
